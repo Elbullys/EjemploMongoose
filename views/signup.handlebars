@@ -1,0 +1,78 @@
+<div class="col-md-8 mx-auto pt-2">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Registro de Usuario</h3>
+        </div>
+        <div class="card-body">
+            <form action="/usuarios/signup" method="POST">
+                <div class="row">
+                    <div class="col mb-3">
+                        <input type="text" name="nombre" class="form-control" placeholder="Nombre(s)" autofocus required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <input type="text" name="apellido_paterno" class="form-control" placeholder="Apellido Paterno" required>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <input type="text" name="apellido_materno" class="form-control" placeholder="Apellido Materno">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 text-center">
+                         <label for="fecha_nac" class="form-label mb-3 pt-2">Fecha de Nac.</label>
+                    </div>
+                    <div class="col-8">
+                        <div class="mb-3">
+                            {{#if fecha_nac}}
+                                {{{inputDate 'fecha_nac' fecha_nac 'new'}}}
+                            {{else}}
+                                <input type="date" name="fecha_nac" class="form-control" required>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <input type="email" name="email" value="{{#if email}}{{email}}{{/if}}" class="form-control" placeholder="Correo Electrónico" required>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <input type="password" name="password" value="{{password}}" class="form-control" placeholder="Contraseña" required>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <input type="password" name="confirm_password" value="{{confirm_password}}" class="form-control" placeholder="Confirmar Contraseña" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <input type="tel" name="phone" value="{{#if phone}}{{phone}}{{/if}}" class="form-control" placeholder="Teléfono Personal" pattern="[0-9]{10}">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <input type="number" name="cp" value="{{#if cp}}{{cp}}{{/if}}" class="form-control" placeholder="Código Postal" min="1">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 text-center">
+                         <label for="gender" class="form-label mb-3 pt-2">Género</label>
+                    </div>
+                    <div class="col-8">
+                        <div class="mb-3">
+                            <select class="form-control" name="gender">
+                                <option value="">Seleccione uno</option>
+                                <option value="Mujer" selected >Mujer</option>
+                                <option value="Hombre" selected >Hombre</option>
+                                <option value="Otro" selected >Otro</option>
+                                <option value="Prefiero no decirlo" selected >Prefiero no decirlo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto mb-3">
+                    <button class="btn btn-primary btn-block" type="submit">
+                        Enviar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
