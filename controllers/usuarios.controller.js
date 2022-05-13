@@ -1,7 +1,7 @@
 const usuariosController = {};
 
 const DateOnly = require('dateonly');
-const Usuario = require('../models/usuarios');
+const usuariosSchema = require('../models/usuarios');
 
 //======================================================
 //  SIGNIN (INICIAR SESION)
@@ -9,10 +9,29 @@ const Usuario = require('../models/usuarios');
 usuariosController.renderSignIn = (req, res, next) => {
     res.render('signin', {layout: 'otro'});
 }
-usuariosController.signIn = (req, res, next) => {
-    res.send('Datos recibidos: ' + req.body.email + ', ' + req.body.password);
+usuariosController.signIn = async (req, res, next) => {
+    const {
+        email, password
+    } = req.body;
 
-
+    let usuarioEncontrado = await usuariosSchema.findOne({correo_electronico: email});
+    if(!usuarioEncontrado){
+        res.send("Correo electrónico no encontrado.")
+    }
+    else{
+        const resultado = await usuarioEncontrado.matchPassword(password);
+        if(resultado){
+            if(usuarioEncontrado.isAdmin){
+                res.redirect('/admin/');
+            }
+            else{
+                res.redirect('/productos/listaProductos');
+            }
+        }
+        else{
+            res.send("Correo electrónico y contraseña no validos.")
+        }
+    }
 }
 
 //======================================================

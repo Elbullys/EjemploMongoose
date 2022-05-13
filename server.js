@@ -35,6 +35,7 @@ app.get('/', (req, res) => {
     res.render('home', {layout: 'main'});
 });
 app.use(require('./routes/usuarios.routes'));
+app.use(require('./routes/admin.routes'));
 
 //========================================================
 //  EXPORTAR MODULO
