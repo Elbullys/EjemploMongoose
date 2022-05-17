@@ -1,3 +1,25 @@
 <p>
     Todos los productos
 </p>
+
+<table class="table table-striped">
+    <thead>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+    </thead>
+    <tbody>
+        {{#each productos }}
+        <tr>
+            <td>{{descripcion}}</td>
+            <td>{{precio}}</td>
+            <td>{{cantidad}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+    <tfoot>
+        <td></td>
+        <td></td>
+        <td>Total = X</td>
+    </tfoot>
+</table>    

@@ -5,9 +5,19 @@ const path = require('path');
 const app = express();
 
 //========================================================
-//      Indicar el motor de vistas
+//      CONFIGURACIONES DEL MOTOR DE VISTAS
 //========================================================
-app.engine('handlebars', exphbs.engine());
+const hbs = exphbs.create({
+    defaultLayout: 'main',
+    layoutsDir: path.join(app.get('views'), 'layouts'),
+    partialsDir: path.join(app.get('views'), 'partials'),
+    extname: '.handlebars',
+    runtimeOptions:{
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true
+    },
+});
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 // configurar motor
 app.set('views', './views');
@@ -36,6 +46,7 @@ app.get('/', (req, res) => {
 });
 app.use(require('./routes/usuarios.routes'));
 app.use(require('./routes/admin.routes'));
+app.use(require('./routes/productos.routes'));
 
 //========================================================
 //  EXPORTAR MODULO
