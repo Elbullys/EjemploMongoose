@@ -3,10 +3,8 @@ const mongoose = require('mongoose');
 const CADENA_CONEXION = "mongodb://127.0.0.1:27017/ejemplo_mongoose_db";
 
 const options = {
-    //useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    //useFindAndModify: false,
     serverSelectionTimeoutMS: 5000
 };
 

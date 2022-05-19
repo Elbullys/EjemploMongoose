@@ -1,6 +1,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const methodOverride = require('method-override');
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //  MIDDLEWARES
 //========================================================
 app.use(express.urlencoded({extended: false}));
+app.use(methodOverride('_method'));
 app.use((req, res, next) => {
     next();
 });

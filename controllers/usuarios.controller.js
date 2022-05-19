@@ -1,7 +1,7 @@
 const usuariosController = {};
 
 const DateOnly = require('dateonly');
-const usuariosSchema = require('../models/usuarios');
+const Usuario = require('../models/usuarios');
 
 //======================================================
 //  SIGNIN (INICIAR SESION)
@@ -14,7 +14,7 @@ usuariosController.signIn = async (req, res, next) => {
         email, password
     } = req.body;
 
-    let usuarioEncontrado = await usuariosSchema.findOne({correo_electronico: email});
+    let usuarioEncontrado = await Usuario.findOne({correo_electronico: email});
     if(!usuarioEncontrado){
         res.send("Correo electrónico no encontrado.")
     }

@@ -22,4 +22,4 @@ const productosSchema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model("Producto", productosSchema);
+module.exports = mongoose.model('Producto', productosSchema);;

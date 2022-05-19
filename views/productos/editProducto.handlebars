@@ -1,0 +1,25 @@
+<form class="form-floating" action="/productos/edit/{{producto._id}}?_method=PUT" method="POST">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="descripcion" name="descripcion"
+            value={{ producto.descripcion }}>
+        <label for="descripcion">Descripción</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" id="precio" name="precio"
+            value={{ producto.precio }}>
+        <label for="precio">Precio</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" id="cantidad" name="cantidad"
+            value={{ producto.cantidad }}>
+        <label for="cantidad">Cantidad</label>
+    </div>
+    <div class="form-floating mb-3">
+        <button type="submit" class="btn btn-primary">
+            Guardar
+        </button>
+        <a href="/productos/" class="btn btn-secondary">
+            Cancelar
+        </a>
+    </div>
+</form>
