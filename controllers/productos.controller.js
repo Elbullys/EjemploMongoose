@@ -22,7 +22,7 @@ productosController.renderListaProductos = async (req, res, next) => {
 }
 
 //======================================================
-//  LISTA DE PRODUCTOS CRUD
+//  LISTA DE PRODUCTOS CRUD aplica
 //======================================================
 productosController.renderCrudProductos = async (req, res, next) => {
     
